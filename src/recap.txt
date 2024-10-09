@@ -1,0 +1,24 @@
+- komponenta
+- import a registrace
+- konfigurační objekt komponenty
+  - name: String
+  - props: (3 způsoby definice) - data přicházející z rodičovské komponenty
+  - data: funkce, která vrací objekt s jednotlivými datovými položkami
+  - components: { názvy dceřinných komponent }
+
+<template>
+
+  <element>{{ JS expression }}</element>
+  <element v-bind:attribute="JS expression"></element>
+  <element :attribute="JS expression"></element>
+  <komponenta :propsName="JS expression"/>
+
+</template>
+
+<script>
+
+export default config object
+
+</script>
+
+<style scoped></style>

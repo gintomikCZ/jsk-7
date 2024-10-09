@@ -1,47 +1,60 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+<!-- html goes here -->
+  <h1>naše první vue appka</h1>
+  <div>{{ 2 + 2 }}</div>
+  <!-- interpolace -->
+  <div>{{ 5 > 3 }}</div>
+  <div>{{ firstname + ' ' + lastname }}</div>
+  <div>{{ 'his first dog\'s name is ' + dogs[0].name }}</div>
+  <TButton label="tlačítko" />
+  <TButton label="click me" />
+  <TButton label="OK" />
+  <TButton label="10+2" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+  <TButton :label="10 + 2"/>
+  <!-- direktiva v-bind  -->
+  <TButton :label="firstname" />
+  <TButton label="firstname" />
+  <TButton :label="dogs[0].name + ' is ' + dogs[0].breed" />
+  <div>
+    <input :disabled="isDisabled">
+  </div>
+
 </template>
 
+
+<script>
+// javascript goes here
+// importovat a registrovat dceřinnou komponentu
+
+import TButton from '@/components/TButton.vue'
+
+
+export default {
+  name: 'App',
+  // data musí být funkce/metoda, která vrací objekt
+  data () {
+    return {
+      firstname: 'Karel',
+      lastname: 'Houska',
+      dogs: [
+        {
+          name: 'Alík',
+          breed: 'cocker'
+        }
+      ],
+      isDisabled: false
+    }
+  },
+  components: { TButton: TButton }
+}
+
+</script>
+
+
 <style scoped>
-header {
-  line-height: 1.5;
-}
+/* css goes here */
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
